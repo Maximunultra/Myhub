@@ -9,7 +9,7 @@ if (isset($_POST['submit'])) {
 
     try {
         // Prepare and execute the query
-        $query = "SELECT * FROM user WHERE Username = :username";
+        $query = "SELECT * FROM users WHERE Username = :username";
         $stmt = $conn->prepare($query);
         $stmt->bindParam(':username', $username);
         $stmt->execute();
@@ -22,7 +22,7 @@ if (isset($_POST['submit'])) {
             if ($password == $row['Password']) {
                 // Successful login
                 echo $_SESSION['username'] = $username;
-                header('Location: view.php');
+                header('Location: nav.php');
                 exit;
             } else {
                 // Invalid password
