@@ -130,7 +130,7 @@
         <input type="submit" value="Upload Image">
     </form>
 
-    <!-- Modal -->
+    
     <div id="uploadModal" class="modal">
         <div class="modal-content">
             <span class="close-btn">&times;</span>
@@ -138,39 +138,34 @@
         </div>
     </div>
 
-    <!-- JavaScript to handle form submission and show modal -->
     <script>
-        // Form submit event listener
+        
         document.getElementById('uploadForm').addEventListener('submit', function (e) {
-            e.preventDefault(); // Prevent the form from reloading the page
-
-            // Create a FormData object to send the form data via AJAX
+            e.preventDefault(); 
             var formData = new FormData(this);
-
-            // Send the form data via AJAX to the PHP script
             fetch('upload.php', {
                 method: 'POST',
                 body: formData
             })
             .then(response => response.text()) // Parse the response as text
             .then(data => {
-                // Show the success modal with the server response
+                
                 document.getElementById('modalMessage').textContent = data;
                 document.getElementById('uploadModal').style.display = 'block';
             })
             .catch(error => {
-                // Handle errors and show them in the modal
+               
                 document.getElementById('modalMessage').textContent = 'Error uploading image.';
                 document.getElementById('uploadModal').style.display = 'block';
             });
         });
 
-        // Close modal when clicking on the close button
+       
         document.querySelector('.close-btn').addEventListener('click', function () {
             document.getElementById('uploadModal').style.display = 'none';
         });
 
-        // Close modal when clicking outside of the modal content
+        
         window.onclick = function (event) {
             if (event.target === document.getElementById('uploadModal')) {
                 document.getElementById('uploadModal').style.display = 'none';
