@@ -22,7 +22,7 @@ if (isset($_POST['submit'])) {
             if ($password == $row['Password']) {
                 // Successful login
                 echo $_SESSION['username'] = $username;
-                header('Location:./admin/display.php');
+                header('Location:./admin/breeds.php');
                 exit;
             } else {
                 // Invalid password

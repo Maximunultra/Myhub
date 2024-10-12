@@ -6,6 +6,46 @@
     <title>Navigator</title>
     <link rel="stylesheet" href="nav.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@500&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins',sans-serif;
+}
+
+.container{
+    position: fixed;
+    width: 200px;
+    min-height: 100px;
+    max-width: 200px;
+    background: #fff;
+    position: absolute;
+    box-shadow: 0 0 5px rgb(0,0,0,0.3);
+    z-index: 1;
+    
+}
+.container .imgbox{
+ position: relative;
+ width: 100px;
+ height: 120px;
+ margin-bottom: 20px;
+ 
+
+}
+
+.container .imgbox img{
+    position: relative;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    padding: 5px;
+    border-radius: 12px;
+   
+}
+    </style>
 </head>
 <body>
     <div class="container">
@@ -14,12 +54,12 @@
         <ol>
             <li class="searchbox"><i class="fas fa-search"><input type="text" placeholder="Search na bossing"></i></li>
 
-            <li class="active"><a href=""><i class="fas fa-camera"><p>Breed Class.tools</p></i></a></li>
-            <li><a href="./admin/display.php"><i class="fas fa-paw"><p>Breeds</p></i></a></li>
+            <li><a href="../breed_tool.php"><i class="fas fa-camera"><p>Breed Class.tools</p></i></a></li>
+            <li><a href="../admin/breeds.php"><i class="fas fa-paw"><p>Breeds</p></i></a></li>
             <li><a href=""><i class="fas fa-globe"><p>Community</p></i></a></li>
             <li><a href=""><i class="fas fa-cog"><p>Resources</p></i></a></li>
             <li><a href=""><i class="fas fa-headset"><p>Support Us</p></i></a></li>
-            <li><a href=""><i class="fas fa-circle-question"><p>About</p></i></a></li>
+            <li><a href="../about.php"><i class="fas fa-circle-question"><p>About</p></i></a></li>
             <li><a href=""><i class="fas fa-circle-user"><p>Account</p></i></a></li>
         </ol>
     </div>

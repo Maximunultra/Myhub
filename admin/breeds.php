@@ -1,4 +1,5 @@
 <?php
+include '../include/breeds.html';
 require_once '../constant/config.php';
 
 try {
@@ -18,9 +19,6 @@ try {
                         <p><strong>Breed:</strong> " . htmlspecialchars($row["breed"]) . "</p>
                         <p><strong>Lifespan:</strong> " . htmlspecialchars($row["lifespan"]) . "</p>
                         <p><strong>Description:</strong> " . htmlspecialchars($row["description"]) . "</p>
-
-                        <a class='btn btn-info' href='update.php?id=" . htmlspecialchars($row['ID']) . "'>Edit</a>
-                        <a class='btn btn-danger' href='delete.php?id=" . htmlspecialchars($row['ID']) . "'>Delete</a>
                     </div>
                   </div>";
         }
@@ -68,23 +66,6 @@ try {
 
 .card-body {
     margin-top: 15px;
-}
-
-.btn {
-    display: inline-block;
-    text-decoration: none;
-    padding: 8px 15px;
-    border-radius: 5px;
-    color: white;
-    margin-top: 10px;
-}
-
-.btn-info {
-    background-color: #17a2b8;
-}
-
-.btn-danger {
-    background-color: #dc3545;
 }
 
 h4 {
