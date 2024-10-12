@@ -21,7 +21,7 @@ try {
     if($stmt1->rowCount() > 0) {
         echo "User already exist!";
     }else {
-        $sql = "INSERT INTO users(First_Name,Middle_Name,Last_Name,Gender,Age,Birthdate,Email,Username,Password) VALUES(:lname,:mname,:lname,:gender,:age,:birth,:email,:uname,:pass)";
+        $sql = "INSERT INTO users(First_Name,Middle_Name,Last_Name,Gender,Age,Birthdate,Email,Username,Password) VALUES(:fname,:mname,:lname,:gender,:age,:birth,:email,:uname,:pass)";
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(':fname', $fname);
         $stmt->bindParam(':mname', $mname);
