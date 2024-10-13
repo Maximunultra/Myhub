@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 30, 2024 at 02:03 PM
+-- Generation Time: Oct 13, 2024 at 02:31 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -41,7 +41,6 @@ CREATE TABLE `images` (
 --
 
 INSERT INTO `images` (`id`, `file_path`, `type`, `breed`, `lifespan`, `description`) VALUES
-(6, 'images/66fa4b37e612d.jpg', 'cat', 'Bulcat', '25years', 'Malambing '),
 (7, 'images/66fa4c060a509.jpeg', 'Dog', 'Golden retriver', '80 years', 'Malambing malakas kumain, mabalahibo'),
 (8, 'images/66fa590274bd1.jpg', 'Bird', ' Budgerigar', '5 - 10years', 'The Budgerigar, often referred to as a parakeet, is a small, colorful bird native to Australia. They are highly sociable and intelligent birds known for their ability to mimic human speech and learn tricks. Budgies come in a variety of colors including green, yellow, blue, and white. They are ideal pets due to their friendly nature and relatively easy care.');
 
@@ -60,6 +59,7 @@ CREATE TABLE `users` (
   `Age` int(11) NOT NULL,
   `Birthdate` date NOT NULL,
   `Email` varchar(50) NOT NULL,
+  `Role` varchar(50) NOT NULL DEFAULT 'user',
   `Username` varchar(50) NOT NULL,
   `Password` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -68,8 +68,10 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`ID`, `First_Name`, `Middle_Name`, `Last_Name`, `Gender`, `Age`, `Birthdate`, `Email`, `Username`, `Password`) VALUES
-(4, 'Laurence', 'Advincula', 'Palacio', 'male', 20, '2021-08-13', 'laurencepalacio099gmail.com', 'laurencepalacio', 'admin');
+INSERT INTO `users` (`ID`, `First_Name`, `Middle_Name`, `Last_Name`, `Gender`, `Age`, `Birthdate`, `Email`, `Role`, `Username`, `Password`) VALUES
+(4, 'Laurence', 'Advincula', 'Palacio', 'male', 20, '2021-08-13', 'laurencepalacio099gmail.com', 'admin', 'laurencepalacio', 'admin'),
+(5, 'Paul Kenrick', 'navarro', 'Pineda', 'Male', 21, '2003-08-15', 'paul@gmail.com', 'user', 'paulkenrick', 'user'),
+(7, 'Hugh', 'Eugene', 'Navarro', 'Male', 17, '2007-07-04', 'hugh@gmail.com', 'user', 'hugh', 'user');
 
 --
 -- Indexes for dumped tables
@@ -101,7 +103,7 @@ ALTER TABLE `images`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

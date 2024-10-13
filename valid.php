@@ -1,5 +1,4 @@
 <?php
-
 include 'constant/config.php';
 session_start();
 
@@ -16,20 +15,24 @@ if (isset($_POST['submit'])) {
 
         if ($stmt->rowCount() > 0) {
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
-            // Verify the password
-            // echo $password;
-            // echo $row;
             if ($password == $row['Password']) {
-                // Successful login
-                echo $_SESSION['username'] = $username;
-                header('Location:./admin/breeds.php');
-                exit;
+                // Successful login, check user role
+                $role = $row['Role'];
+                $_SESSION['ID'] = $row['ID'];
+
+                if ($role == 'admin') {
+                    $_SESSION['admin'] = $row['Username'];
+                    header("Location: ./admin/users.php");
+                    exit();
+                } elseif ($role == 'user') {
+                    $_SESSION['user'] = $row['Username'];
+                    header("Location: ./admin/breeds.php");
+                    exit();
+                }
             } else {
-                // Invalid password
                 echo 'Invalid username or password.';
             }
         } else {
-            // Invalid username
             echo 'Invalid username or password.';
         }
     } catch (PDOException $e) {

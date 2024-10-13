@@ -74,6 +74,7 @@ tr:hover {
 </head>
 <body>
     <?php
+    include ('../include/admin_nav.html');
 require_once '../constant/config.php';
     try {
         $stmt = $conn->prepare("SELECT ID,First_Name,Middle_Name,Last_Name,Gender,Age,Birthdate,Email,Username,Password FROM users");

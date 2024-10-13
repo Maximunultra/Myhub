@@ -1,4 +1,5 @@
 <?php
+include ('../include/admin_nav.html');
 require_once '../constant/config.php';
 
 try {

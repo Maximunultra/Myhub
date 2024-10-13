@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f0f8ff;
+        }
+        .header {
+            background-color: #a9cce3;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 2px solid #5dade2;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 1.5rem;
+            color: #000;
+        }
+        .menu {
+            padding: 10px;
+            display: flex;
+            gap: 10px;
+        }
+        .menu button {
+            background-color: #7b6b6b;
+            color: #fff;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .menu button:hover {
+            background-color: #6a5a5a;
+        }
+        .logout {
+            
+            padding: 10px;
+            text-align: right;
+        }
+        .logout button {
+            background-color: #7b6b6b;
+            color: #fff;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .logout button:hover {
+            background-color: #6a5a5a;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Admin Dashboard</h1>
+        <div class="menu">
+            <a href="../admin/users.php"><button>User-Management</button></a>
+            <a href="../admin/display.php"><button>petInfo-Mngt</button></a>
+        </div>
+        <div class="logout">
+           <a href="\Myhub\logout.php"> <button>Log out</button></a>
+        </div>
+    </div>
+</body>
+</html>
