@@ -9,3 +9,7 @@ password:user
 
 username:hugh
 password:user
+
+Note:Palagay po muna yung database po sa phpmyadmin
+
+
