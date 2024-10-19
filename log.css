@@ -1,4 +1,4 @@
-/* Reset some default styles */
+
 body, html {
     margin: 0;
     padding: 0;
@@ -13,16 +13,16 @@ body, html {
     align-items: center;
 }
 
-/* Center the login container */
+
 .login-container {
     width: 100%;
     max-width: 380px;
     padding: 40px;
-    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
-    border-radius: 12px; /* Rounded corners */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Larger shadow for depth */
+    background-color: rgba(255, 255, 255, 0.9); 
+    border-radius: 12px; 
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
     text-align: center;
-    animation: fadeIn 1s ease-in-out; /* Fade-in animation */
+    animation: fadeIn 1s ease-in-out; 
 }
 
 
@@ -46,7 +46,7 @@ h2 {
     font-size: 14px;
 }
 
-/* Input field style */
+
 .form-group input[type="text"],
 .form-group input[type="password"] {
     width: 100%;

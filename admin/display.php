@@ -7,7 +7,7 @@ try {
     $stmt = $conn->prepare("SELECT ID, file_path, type, breed, lifespan, description FROM images");
     $stmt->execute();
 
-    
+    echo "<div class='tag'><a href='upl.php'>Add</a></div>";
     if ($stmt->rowCount() > 0) {
         echo "<div class='card-container'>";
         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -34,19 +34,18 @@ try {
     echo "Connection failed: " . $e->getMessage();
 }
 ?>
-
 <style>
 
 .card-container {
     display: flex;
     outline: #dc3545 solid 2px;
-    width: 90%;
+    width: 89vw;
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 10px;
     padding-right: 100px;
     padding-left: 50px;
-    margin-left: 200px; 
+    margin-left: 10px; 
 }
 
 .card {
@@ -91,6 +90,17 @@ try {
 h4 {
     font-size: 1.2em;
     margin-bottom: 10px;
+}
+
+.tag a{
+    background-color: ligth-green;
+  border: 1px solid green;
+  padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+    position: relative;
+    left: 97%
+    
 }
 
 </style>

@@ -8,7 +8,7 @@
 </head>
 <body>
     <form id="myForm">
-        <h1>Welcome Visitors</h1>
+        <h1>Registration</h1>
         <div>
             <label for="fname">First Name</label>
             <input type="text" name="fname" id="fname" placeholder="First Name" autocomplete="off">

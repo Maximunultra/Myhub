@@ -61,7 +61,7 @@ if (isset($_GET['id'])) {
           $uname = $row["Username"];
           $pass = $row["Password"];
 ?>
-<!-- <style>/* General body styling */
+<style>/* General body styling */
 body {
     font-family: Arial, sans-serif;
     background: url("https://img.freepik.com/free-vector/cartoon-illustration-small-dorm-room-dormitory-interior-inside-hostel-bedroom_1441-1836.jpg?size=626&ext=jpg&ga=GA1.1.2082370165.1715644800&semt=ais_user") no-repeat center center fixed;
@@ -133,7 +133,7 @@ a{
     display: flex;
     justify-content: center;
 }
-</style> -->
+</style>
 
 <form action="" method="post">
     <fieldset>
