@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 13, 2024 at 02:31 PM
+-- Generation Time: Oct 27, 2024 at 03:09 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -33,16 +33,20 @@ CREATE TABLE `images` (
   `type` varchar(100) NOT NULL,
   `breed` varchar(100) NOT NULL,
   `lifespan` varchar(100) NOT NULL,
-  `description` text NOT NULL
+  `description` text NOT NULL,
+  `status` varchar(10) DEFAULT 'enabled'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `images`
 --
 
-INSERT INTO `images` (`id`, `file_path`, `type`, `breed`, `lifespan`, `description`) VALUES
-(7, 'images/66fa4c060a509.jpeg', 'Dog', 'Golden retriver', '80 years', 'Malambing malakas kumain, mabalahibo'),
-(8, 'images/66fa590274bd1.jpg', 'Bird', ' Budgerigar', '5 - 10years', 'The Budgerigar, often referred to as a parakeet, is a small, colorful bird native to Australia. They are highly sociable and intelligent birds known for their ability to mimic human speech and learn tricks. Budgies come in a variety of colors including green, yellow, blue, and white. They are ideal pets due to their friendly nature and relatively easy care.');
+INSERT INTO `images` (`id`, `file_path`, `type`, `breed`, `lifespan`, `description`, `status`) VALUES
+(7, 'images/66fa4c060a509.jpeg', 'Dog', 'Golden retriver', '80 years', 'Malambing malakas kumain, mabalahibo', 'enabled'),
+(9, 'images/671e2e45bbea1.jpg', 'Dog', 'Beagle', '12 - 15years', 'A small to medium-sized breed known for its friendly, curious, and gentle nature. Beagles have a keen sense of smell and are often used in hunting.', 'disabled'),
+(10, 'images/671e2e86532e5.jfif', 'Dog', 'Dachshund', '12 - 16years', 'A small dog with a long body and short legs, often known as the \"wiener dog.\" They are curious, brave, and have a strong hunting instinct.', 'enabled'),
+(11, 'images/671e2ee08dcba.jfif', 'Dog', 'French Bulldog', '10 - 12years', ' A small, muscular dog with a smooth coat and distinctive \"bat-like\" ears. Known for being affectionate, playful, and good with families.', 'disabled'),
+(12, 'images/671e2f300cb9c.jfif', 'Dog', 'Shih Tzu', '10 - 16years', 'A small dog with a long, flowing coat and a friendly, affectionate personality. Originally bred for companionship.', 'disabled');
 
 -- --------------------------------------------------------
 
@@ -97,7 +101,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `images`
 --
 ALTER TABLE `images`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `users`

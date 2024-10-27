@@ -4,7 +4,7 @@ require_once '../constant/config.php';
 
 try {
     
-    $stmt = $conn->prepare("SELECT ID, file_path, type, breed, lifespan, description FROM images");
+    $stmt = $conn->prepare("SELECT ID, file_path, type, breed, lifespan, description, status FROM images WHERE status = 'enabled'");
     $stmt->execute();
 
     
