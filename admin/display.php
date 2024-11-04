@@ -19,11 +19,12 @@ try {
                         <p><strong>Breed:</strong> " . htmlspecialchars($row["breed"]) . "</p>
                         <p><strong>Lifespan:</strong> " . htmlspecialchars($row["lifespan"]) . "</p>
                         <p><strong>Description:</strong> " . htmlspecialchars($row["description"]) . "</p>
-                       
+                      <div class='card-btn'> 
         <a class='btn boolean-btn' href='toggle_status.php?ID=" . htmlspecialchars($row['ID']) . "&status=" . $row['status'] . "'>".$row['status']."</a>
 
-                        <a class='btn btn-info' href='update.php?id=" . htmlspecialchars($row['ID']) . "'>Edit</a>
+                        <a class='btn btn-info' href='editPet.php?id=" . htmlspecialchars($row['ID']) . "'>Edit</a>
                         <a class='btn btn-danger' href='delete.php?id=" . htmlspecialchars($row['ID']) . "'>Delete</a>
+                        </div>
                     </div>
                   </div>";
         }
@@ -40,6 +41,7 @@ try {
 
 .card-container {
     display: flex;
+    position: relative;
     outline: #dc3545 solid 2px;
     width: 89vw;
     justify-content: space-between;
@@ -51,6 +53,7 @@ try {
 }
 
 .card {
+    position: relative;
     background-color: #f9f9f9;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -72,14 +75,18 @@ try {
 .card-body {
     margin-top: 15px;
 }
-
+.card-btn {
+    display: flex;
+    gap: 10px;
+}
 .btn {
-    display: inline-block;
+    gap: 10px;
     text-decoration: none;
     padding: 8px 15px;
     border-radius: 5px;
     color: white;
     margin-top: 10px;
+    bottom: 10px;
 }
 .boolean-btn {
     background-color: green;

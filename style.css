@@ -71,3 +71,67 @@ button:hover {
 .reset{
     background-color: red;
 }
+
+/* editpet */
+
+.submit-news-form {
+    max-width: 500px;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.submit-news-form form {
+    display: flex;
+    flex-direction: column;
+}
+
+.submit-news-form label {
+    margin-top: 10px;
+    font-weight: bold;
+    color: #333;
+}
+
+.submit-news-form input[type="text"],
+.submit-news-form input[type="file"],
+.submit-news-form textarea,
+.submit-news-form select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.submit-news-form img {
+    display: block;
+    margin: 10px 0;
+    max-width: 100%;
+    border-radius: 4px;
+}
+
+.submit-news-form textarea {
+    min-height: 80px;
+    resize: vertical;
+}
+
+.submit-news-form input[type="submit"] {
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.submit-news-form input[type="submit"]:hover {
+    background-color: #45a049;
+}
