@@ -18,7 +18,6 @@ if (isset($_GET['id'])) {
 }
 
 if (isset($_POST['submit'])) {
-    // Data fetched successfully
     if ($fetch) {
         $type = $_POST['type'];
         $breed = $_POST['breed'];
@@ -26,7 +25,6 @@ if (isset($_POST['submit'])) {
         $description = $_POST['description'];
         $status = $_POST['status'] ?? 'enabled';
 
-        // Handle image upload if provided
         $file_path = $fetch['file_path']; // Default to current file path
         if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
             $file_name = $_FILES['image']['name'];
@@ -39,7 +37,6 @@ if (isset($_POST['submit'])) {
 
         $id = $_POST['id'];
 
-        // Prepare update query with PDO
         $update_stmt = $conn->prepare(
             "UPDATE images SET file_path=:file_path, type=:type, breed=:breed, lifespan=:lifespan, description=:description, status=:status WHERE id=:id"
         );
@@ -66,44 +63,91 @@ if (isset($_POST['submit'])) {
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <link rel="stylesheet" type="text/css" href="/Myhub/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editor Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-<h1>Editor Page</h1>
-<div class="submit-news-form">
-    <form action="" method="post" enctype="multipart/form-data" <form action="" method="post" enctype="multipart/form-data" onsubmit="return confirm('Are you sure you want to edit this information?');">
-    >
-        <input type="hidden" name="id" value="<?php echo htmlspecialchars($fetch['id'] ?? '', ENT_QUOTES); ?>">
-        <label for="type">Type:</label>
-        <input type="text" id="type" name="type" value="<?php echo htmlspecialchars($fetch['type'] ?? '', ENT_QUOTES); ?>" required><br>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center p-4">
+    <div class="bg-white p-6 rounded-lg shadow-lg max-w-4xl w-full">
+        <h1 class="text-2xl font-bold text-gray-800 mb-6 text-center">Editor Page</h1>
+        
+        <form action="" method="post" enctype="multipart/form-data" class="space-y-4" onsubmit="return confirm('Are you sure you want to edit this information?');">
+            <input type="hidden" name="id" value="<?php echo htmlspecialchars($fetch['id'] ?? '', ENT_QUOTES); ?>">
 
-        <label for="breed">Breed:</label>
-        <input type="text" id="breed" name="breed" value="<?php echo htmlspecialchars($fetch['breed'] ?? '', ENT_QUOTES); ?>" required><br>
+            <!-- Type -->
+            <div>
+                <label for="type" class="block text-gray-700 font-medium mb-1">Type:</label>
+                <input type="text" id="type" name="type" 
+                       value="<?php echo htmlspecialchars($fetch['type'] ?? '', ENT_QUOTES); ?>" 
+                       class="w-full px-4 py-2 border rounded-lg focus:ring focus:ring-blue-300" 
+                       required>
+            </div>
 
-        <label for="lifespan">Lifespan:</label>
-        <input type="text" id="lifespan" name="lifespan" value="<?php echo htmlspecialchars($fetch['lifespan'] ?? '', ENT_QUOTES); ?>" required><br>
+            <!-- Breed -->
+            <div>
+                <label for="breed" class="block text-gray-700 font-medium mb-1">Breed:</label>
+                <input type="text" id="breed" name="breed" 
+                       value="<?php echo htmlspecialchars($fetch['breed'] ?? '', ENT_QUOTES); ?>" 
+                       class="w-full px-4 py-2 border rounded-lg focus:ring focus:ring-blue-300" 
+                       required>
+            </div>
 
-        <label for="image">Image:</label>
-        <input type="file" id="image" name="image"><br>
-        <?php if ($fetch && !empty($fetch['file_path'])): ?>
-            <img src="<?php echo htmlspecialchars($fetch['file_path'], ENT_QUOTES); ?>" alt="Current Image" style="max-width: 200px; padding-top: 10px;"><br>
-            <input type="hidden" name="current_image" value="<?php echo htmlspecialchars($fetch['file_path'], ENT_QUOTES); ?>">
-        <?php endif; ?>
+            <!-- Lifespan -->
+            <div>
+                <label for="lifespan" class="block text-gray-700 font-medium mb-1">Lifespan:</label>
+                <input type="text" id="lifespan" name="lifespan" 
+                       value="<?php echo htmlspecialchars($fetch['lifespan'] ?? '', ENT_QUOTES); ?>" 
+                       class="w-full px-4 py-2 border rounded-lg focus:ring focus:ring-blue-300" 
+                       required>
+            </div>
 
-        <br><br>
-        <label for="description">Description:</label>
-        <textarea id="textarea" name="description"><?php echo htmlspecialchars($fetch['description'] ?? '', ENT_QUOTES); ?></textarea><br>
+            <!-- Image -->
+            <div>
+                <label for="image" class="block text-gray-700 font-medium mb-1">Image:</label>
+                <input type="file" id="image" name="image" 
+                       class="w-full px-4 py-2 border rounded-lg">
+                <?php if ($fetch && !empty($fetch['file_path'])): ?>
+                    <div class="mt-4">
+                        <img src="<?php echo htmlspecialchars($fetch['file_path'], ENT_QUOTES); ?>" 
+                             alt="Current Image" 
+                             class="w-40 h-auto rounded-lg shadow-md">
+                        <input type="hidden" name="current_image" value="<?php echo htmlspecialchars($fetch['file_path'], ENT_QUOTES); ?>">
+                    </div>
+                <?php endif; ?>
+            </div>
 
-        <label for="status">Status:</label>
-        <select name="status" id="status">
-            <option value="enabled" <?php echo ($fetch['status'] ?? '') === 'enabled' ? 'selected' : ''; ?>>Enabled</option>
-            <option value="disabled" <?php echo ($fetch['status'] ?? '') === 'disabled' ? 'selected' : ''; ?>>Disabled</option>
-        </select><br><br>
+            <!-- Description -->
+            <div>
+                <label for="description" class="block text-gray-700 font-medium mb-1">Description:</label>
+                <textarea id="description" name="description" 
+                          class="w-full px-4 py-2 border rounded-lg focus:ring focus:ring-blue-300"><?php echo htmlspecialchars($fetch['description'] ?? '', ENT_QUOTES); ?></textarea>
+            </div>
 
-        <input type="submit" name="submit" value="Submit">
-    </form>
-</div>
+            <!-- Status -->
+            <div>
+                <label for="status" class="block text-gray-700 font-medium mb-1">Status:</label>
+                <select name="status" id="status" 
+                        class="w-full px-4 py-2 border rounded-lg focus:ring focus:ring-blue-300">
+                    <option value="enabled" <?php echo ($fetch['status'] ?? '') === 'enabled' ? 'selected' : ''; ?>>Enabled</option>
+                    <option value="disabled" <?php echo ($fetch['status'] ?? '') === 'disabled' ? 'selected' : ''; ?>>Disabled</option>
+                </select>
+            </div>
+
+            <!-- Buttons -->
+            <div class="flex justify-between">
+                <button type="submit" name="submit" 
+                        class="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 focus:ring focus:ring-blue-300">
+                    Submit
+                </button>
+                <button type="reset" 
+                        class="bg-gray-300 text-gray-700 px-6 py-2 rounded-lg hover:bg-gray-400 focus:ring focus:ring-gray-300">
+                    Reset
+                </button>
+            </div>
+        </form>
+    </div>
 </body>
 </html>
