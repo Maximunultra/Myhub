@@ -4,65 +4,79 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Navigator</title>
-    <link rel="stylesheet" href="nav.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@500&display=swap');
-
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins',sans-serif;
-}
-
-.container{
-    position: fixed;
-    width: 200px;
-    min-height: 100px;
-    max-width: 200px;
-    background: #fff;
-    position: absolute;
-    box-shadow: 0 0 5px rgb(0,0,0,0.3);
-    z-index: 1;
-    
-}
-.container .imgbox{
- position: relative;
- width: 100px;
- height: 120px;
- margin-bottom: 20px;
- 
-
-}
-
-.container .imgbox img{
-    position: relative;
-    width: 100px;
-    height: 100px;
-    object-fit: cover;
-    padding: 5px;
-    border-radius: 12px;
-   
-}
-    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" 
+          integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" 
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
-<body>
-    <div class="container">
-        <div class="imgbox"><img src="https://previews.123rf.com/images/photodeti/photodeti1811/photodeti181100305/112825299-group-of-pets-together-in-front-view-isolated-on-white-background.jpg" alt=""></div>
+<body class="bg-gray-100">
+    <div class="fixed left-0 top-0 w-48 bg-white shadow-md z-10 p-4">
+        <!-- Image Box -->
+        <div class="flex flex-col items-center mb-4">
+            <img src="https://previews.123rf.com/images/photodeti/photodeti1811/photodeti181100305/112825299-group-of-pets-together-in-front-view-isolated-on-white-background.jpg" 
+                 alt="Group of pets" 
+                 class="w-24 h-24 object-cover rounded-lg border-2 border-gray-200">
+        </div>
 
-        <ol>
-            <li class="searchbox"><i class="fas fa-search"><input type="text" placeholder="Search na bossing"></i></li>
+        <!-- Navigation Menu -->
+        <ol class="space-y-3">
+            <!-- Search Box -->
+            <li class="flex items-center border rounded-md px-2 py-1 bg-gray-50 shadow-sm">
+                <i class="fas fa-search text-gray-500 mr-2"></i>
+                <input type="text" placeholder="Search na bossing" 
+                       class="w-full border-none focus:ring-0 text-sm">
+            </li>
 
-            <li><a href=""><i class="fas fa-camera"><p>Breed Class.tools</p></i></a></li>
-            <li><a href=""><i class="fas fa-paw"><p>Breeds</p></i></a></li>
-            <li class="active"><a href=""><i class="fas fa-globe"><p>Community</p></i></a></li>
-            <li><a href=""><i class="fas fa-cog"><p>Resources</p></i></a></li>
-            <li><a href=""><i class="fas fa-headset"><p>Support Us</p></i></a></li>
-            <li><a href="../about.php"><i class="fas fa-circle-question"><p>About</p></i></a></li>
-            <li><a href=""><i class="fas fa-circle-user"><p>Account</p></i></a></li>
+            <!-- Menu Items -->
+            <li class="active">
+                <a href="/Myhub/breed_tool.php" class="flex items-center space-x-2 text-gray-700 hover:text-blue-500">
+                    <i class="fas fa-camera"></i>
+                    <p>Breed Class.tools</p>
+                </a>
+            </li>
+            <li>
+                <a href="/Myhub/admin/breeds.php" class="flex items-center space-x-2 text-gray-700 hover:text-blue-500">
+                    <i class="fas fa-paw"></i>
+                    <p>Breeds</p>
+                </a>
+            </li>
+            <li>
+                <a href="#" class="flex items-center space-x-2 text-gray-700 hover:text-blue-500">
+                    <i class="fas fa-globe"></i>
+                    <p>Community</p>
+                </a>
+            </li>
+            <li>
+                <a href="#" class="flex items-center space-x-2 text-gray-700 hover:text-blue-500">
+                    <i class="fas fa-cog"></i>
+                    <p>Resources</p>
+                </a>
+            </li>
+            <li>
+                <a href="#" class="flex items-center space-x-2 text-gray-700 hover:text-blue-500">
+                    <i class="fas fa-headset"></i>
+                    <p>Support Us</p>
+                </a>
+            </li>
+            <li>
+                <a href="/Myhub/about.php" class="flex items-center space-x-2 text-gray-700 hover:text-blue-500">
+                    <i class="fas fa-circle-question"></i>
+                    <p>About</p>
+                </a>
+            </li>
+            <li>
+                <a href="#" class="flex items-center space-x-2 text-gray-700 hover:text-blue-500">
+                    <i class="fas fa-circle-user"></i>
+                    <p>Account</p>
+                </a>
+            </li>
+            <li>
+                <a href="\Myhub\logout.php" class="flex items-center space-x-2 text-gray-700 hover:text-blue-500">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <p>Logout</p>
+                </a>
+            </li>
         </ol>
     </div>
-    
 </body>
 </html>
