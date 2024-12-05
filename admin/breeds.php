@@ -8,6 +8,7 @@ require_once '../constant/config.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Animal Cards</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -65,7 +66,7 @@ require_once '../constant/config.php';
         }
 
         .animal-image {
-            max-width: 140px;
+            max-width: 100%;
             height: auto;
             border-radius: 5px;
         }
@@ -132,5 +133,63 @@ require_once '../constant/config.php';
         }
         ?>
     </div>
+
+   <!-- Modal Profile of the user -->
+    <div id="profileModal" 
+     class="fixed inset-0 z-50 hidden bg-gray-900 bg-opacity-50 flex items-center justify-center">
+    <div class="bg-white rounded-lg shadow-lg w-96">
+        <div class="flex items-center justify-between px-4 py-3 border-b">
+            <h2 class="text-xl font-semibold text-gray-800">User Profile</h2>
+            <button id="closeProfileModal" 
+                    class="text-gray-500 hover:text-gray-800">&times;</button>
+        </div>
+        <div id="modalContent" class="p-4">
+            <p class="text-center text-gray-500">Loading...</p>
+        </div>
+        <div class="flex justify-end px-4 py-3 border-t">
+            <button id="closeModalFooter" 
+                    class="px-4 py-2 text-white bg-red-600 rounded-lg hover:bg-red-700">
+                Close
+            </button>
+        </div>
+    </div>
+</div>
+
+<Script>
+    document.addEventListener("DOMContentLoaded", function () {
+    const openProfileModal = document.getElementById("openProfileModal");
+    const closeProfileModal = document.getElementById("closeProfileModal");
+    const closeModalFooter = document.getElementById("closeModalFooter");
+    const profileModal = document.getElementById("profileModal");
+    const modalContent = document.getElementById("modalContent");
+
+    // Open Modal
+    openProfileModal.addEventListener("click", function (e) {
+        e.preventDefault();
+
+        // Show Modal
+        profileModal.classList.remove("hidden");
+
+        // Fetch User Data
+        fetch("/Myhub/profile.php")
+            .then((response) => response.text())
+            .then((data) => {
+                modalContent.innerHTML = data; // Inject content into modal
+            })
+            .catch((error) => {
+                modalContent.innerHTML = `<p class="text-red-500">Error loading profile data.</p>`;
+                console.error(error);
+            });
+    });
+
+    // Close Modal
+    [closeProfileModal, closeModalFooter].forEach((btn) =>
+        btn.addEventListener("click", () => {
+            profileModal.classList.add("hidden");
+        })
+    );
+});
+
+</Script>
 </body>
 </html>
