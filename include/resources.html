@@ -34,12 +34,28 @@
                     <p>Breed Class.tools</p>
                 </a>
             </li>
-            <li>
+            <li class="active relative group">
                 <a href="/Myhub/admin/breeds.php" class="flex items-center space-x-2 text-gray-700 hover:text-blue-500">
-                    <i class="fas fa-paw"></i>
-                    <p>Breeds</p>
+                  <i class="fas fa-paw"></i>
+                  <p>Breeds</p>
                 </a>
-            </li>
+                <!-- Dropdown Menu -->
+                <ul class="hidden group-hover:block absolute left-full top-0 mt-2 bg-white border rounded shadow-md z-20">
+                  <li>
+                    <a href="/Myhub/admin/dogs.php" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Dogs</a>
+                  </li>
+                  <li>
+                    <a href="/Myhub/admin/cats.php" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Cats</a>
+                  </li>
+                  <li>
+                    <a href="/Myhub/admin/birds.php" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Birds</a>
+                  </li>
+                  <li>
+                    <a href="/Myhub/admin/fish.php" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Fish</a>
+                  </li>
+                </ul>
+              </li>
+              
             <li class="active">
                 <a href="/Myhub/resources.php" class="flex items-center space-x-2 text-gray-700 hover:text-blue-500">
                     <i class="fas fa-cog"></i>
