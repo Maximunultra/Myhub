@@ -6,7 +6,6 @@ try {
     $mname = $_POST['mname'];
     $lname = $_POST['lname'];
     $email = $_POST['email'];
-  
     $gender = $_POST['gender'];
     $birth = $_POST['birth'];
     $age = $_POST['age'];
@@ -19,8 +18,8 @@ try {
     $stmt1->execute();
 
     if($stmt1->rowCount() > 0) {
-        echo "User already exist!";
-    }else {
+        echo "<script>alert('User already exists!');</script>";
+    } else {
         $sql = "INSERT INTO users(First_Name,Middle_Name,Last_Name,Gender,Age,Birthdate,Email,Username,Password) VALUES(:fname,:mname,:lname,:gender,:age,:birth,:email,:uname,:pass)";
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(':fname', $fname);
@@ -34,11 +33,10 @@ try {
         $stmt->bindParam(':pass', $pass);
 
         $stmt->execute();
-    
-        echo "Data inserted";
+
     }
 
-}catch(PDOException $e) {
+} catch(PDOException $e) {
     echo "Error: " . $e->getMessage();
 }
 

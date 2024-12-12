@@ -61,116 +61,167 @@ if (isset($_GET['id'])) {
           $uname = $row["Username"];
           $pass = $row["Password"];
 ?>
-<style>/* General body styling */
-body {
-    font-family: Arial, sans-serif;
-    background: url("https://img.freepik.com/free-vector/cartoon-illustration-small-dorm-room-dormitory-interior-inside-hostel-bedroom_1441-1836.jpg?size=626&ext=jpg&ga=GA1.1.2082370165.1715644800&semt=ais_user") no-repeat center center fixed;
-    background-size: cover;
+<style>
+    /* General body styling */
+    body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #f0f4ff, #d9e8ff);
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
-}
+    padding: 20px;
+    box-sizing: border-box;
+    }
 
-/* Form styling */
-form {
-    background-color: rgba(255, 255, 255, 0.9);
-    padding: 20px 40px;
-    border-radius: 8px;
+    /* Form styling */
+    form {
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 20px;
+    border-radius: 12px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 100%;
-    max-width: 400px;
+    max-width: 600px;
     box-sizing: border-box;
-}
+    font-size: 14px;
+    }
 
-fieldset {
-    border: 1px solid #ccc;
-    padding: 20px;
-    border-radius: 8px;
-    background-color: #f9f9f9;
-}
+    fieldset {
+    border: none;
+    padding: 0;
+    margin: 0;
+    }
 
-legend {
+    legend {
     font-size: 1.5em;
     font-weight: bold;
     color: #333;
-    padding: 0 10px;
-}
+    margin-bottom: 10px;
+    }
 
-input[type="text"], input[type="int"], input[type="email"], input[type="datetime"], input[type="hidden"] {
-    width: calc(100% - 22px);
+    .form-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    }
+
+    .form-group {
+    flex: 1;
+    min-width: 200px;
+    }
+
+    input[type="text"], input[type="int"], input[type="email"], input[type="date"], input[type="hidden"] {
+    width: 100%;
     padding: 10px;
     margin: 10px 0;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: 6px;
     box-sizing: border-box;
-}
+    transition: border-color 0.3s;
+    font-size: 14px;
+    }
 
-input[type="submit"] {
+    input[type="text"]:focus, input[type="int"]:focus, input[type="email"]:focus, input[type="date"]:focus {
+    border-color: #007bff;
+    outline: none;
+    }
+
+    input[type="submit"] {
     display: inline-block;
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     border: none;
-    border-radius: 4px;
+    border-radius: 6px;
     background-color: #007bff;
     color: white;
     font-size: 16px;
     cursor: pointer;
-}
+    transition: background-color 0.3s;
+    }
 
-input[type="submit"]:hover {
+    input[type="submit"]:hover {
     background-color: #0056b3;
-}
+    }
 
-/* Additional styling for the labels */
-label {
+    label {
     display: block;
     margin: 10px 0 5px;
     font-weight: bold;
-}
-a{
-    display: flex;
-    justify-content: center;
-}
+    }
+
+    a {
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    color: #007bff;
+    margin-top: 10px;
+    font-size: 14px;
+    transition: color 0.3s;
+    }
+
+    a:hover {
+    color: #0056b3;
+    }
 </style>
 
 <form action="" method="post">
     <fieldset>
-    <h2>User Update Form</h2>
-        <legend>Personal information:</legend>
-        First Name:<br>
-        <input type="text" name="fname" value="<?php echo $firstname; ?>">
-        <input type="hidden" name="id" value="<?php echo $id; ?>">
-        <br>
-        Middle Name:<br>
-        <input type="int" name="mname" value="<?php echo $mname; ?>">
-        <br><br>
-        Last Name:<br>
-        <input type="text" name="lname" value="<?php echo $lname; ?>">
-        <br><br>
-        Email:<br>
-        <input type="email" name="email" value="<?php echo $email; ?>">
-        <br><br>
-        Gender:<br>
-        <input type="text" name="gender" value="<?php echo $gender; ?>">
-        <br><br>
-        Birthdate:<br>
-        <input type="date" name="birt" value="<?php echo $birth; ?>">
-        <br><br>
-        Age:<br>
-        <input type="int" name="age" value="<?php echo $age; ?>">
-        <br><br>
-        Username:<br>
-        <input type="text" name="uname" value="<?php echo $uname; ?>">
-        <br><br>
-        Password:<br>
-        <input type="text" name="pass" value="<?php echo $pass; ?>">
+        <legend>User Update Form</legend>
+        <div class="form-row">
+            <div class="form-group">
+                <label for="fname">First Name:</label>
+                <input type="text" id="fname" name="fname" value="<?php echo $firstname; ?>">
+                <input type="hidden" name="id" value="<?php echo $id; ?>">
+            </div>
+            <div class="form-group">
+                <label for="mname">Middle Name:</label>
+                <input type="text" id="mname" name="mname" value="<?php echo $mname; ?>">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group">
+                <label for="lname">Last Name:</label>
+                <input type="text" id="lname" name="lname" value="<?php echo $lname; ?>">
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" value="<?php echo $email; ?>">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group">
+                <label for="gender">Gender:</label>
+                <input type="text" id="gender" name="gender" value="<?php echo $gender; ?>">
+            </div>
+            <div class="form-group">
+                <label for="birth">Birthdate:</label>
+                <input type="date" id="birth" name="birt" value="<?php echo $birth; ?>">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group">
+                <label for="age">Age:</label>
+                <input type="text" id="age" name="age" value="<?php echo $age; ?>">
+            </div>
+            <div class="form-group">
+                <label for="uname">Username:</label>
+                <input type="text" id="uname" name="uname" value="<?php echo $uname; ?>">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group">
+                <label for="pass">Password:</label>
+                 <input type="text" id="pass" name="pass" value="<?php echo $pass; ?>" 
+                 pattern="^[A-Z][a-zA-Z0-9]{7,}$" 
+                    title="Password must start with an uppercase letter, contain at least one number, and be 8 characters long.">
+            </div>
+        </div>
         <input type="submit" value="Update" name="update">
-        <br><br>
-        <a href="users.php" class="btn">Back</a>
+        <a href="users.php">Back</a>
     </fieldset>
 </form>
+
 <?php
         } else { 
             header('Location: users.php');

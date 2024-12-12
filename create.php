@@ -59,7 +59,8 @@
         <!-- Email -->
         <div>
             <label for="email" class="block text-gray-700 font-medium mb-1">Email Address</label>
-            <input type="email" name="email" id="email" placeholder="Email Address" autocomplete="off"
+            <input type="email" name="email" id="email" placeholder="Email Address" autocomplete="off" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" 
+                title="Please enter a valid email address (e.g., user@example.com)" 
                 class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-500" required>
         </div>
 
@@ -74,7 +75,8 @@
         <div class="col-span-2">
             <label for="pass" class="block text-gray-700 font-medium mb-1">Password</label>
             <input type="password" name="pass" id="pass" placeholder="Password"
-                class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-500" required>
+                class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-500" pattern="^[A-Z][a-zA-Z0-9]{7,}$" 
+                title="Password must start with an uppercase letter, contain at least one number, and be 8 characters long." required>
             <div class="mt-2 flex items-center">
                 <input type="checkbox" id="showPass" class="mr-2">
                 <label for="showPass" class="text-gray-700 text-sm">Show Password</label>
@@ -147,27 +149,56 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script>
-        $(document).ready(function() {
-            $("#myForm").submit(function(e) {
-                e.preventDefault();
+    $(document).ready(function () {
+        $("#myForm").submit(function (e) {
+            e.preventDefault(); // Prevent form's default submission
 
-                const formData = $(this).serialize();
+            const formData = $(this).serialize(); // Serialize form data
 
-                console.log(formData);
+            $.ajax({
+                type: "POST",
+                url: "insert.php", // Ensure this points to your PHP script
+                data: formData,
+                success: function (response) {
+                    console.log(response); // Log the server's response
 
-                $.ajax({
-                    type: "POST",
-                    url: "insert.php",
-                    data: formData,
-                    success: function(response) {
-                        console.log(response);
-                    },
-                    error: function(error, xhr, status) {
-                        console.log("Error!");
-                    }
-                });
+                    // Show success message and reset form
+                    alert("Successfully Saved!");
+                    $("#myForm")[0].reset(); // Reset the form fields
+                },
+                error: function (xhr, status, error) {
+                    console.error("Error occurred: " + error);
+                    alert("An error occurred while submitting the form.");
+                }
             });
         });
-    </script>
+
+        // Handle the password visibility toggle
+        $("#showPass").change(function () {
+            const passwordInput = $("#pass");
+            if (this.checked) {
+                passwordInput.attr("type", "text");
+            } else {
+                passwordInput.attr("type", "password");
+            }
+        });
+
+        // Calculate age on birthdate input change
+        $("#birth").change(function () {
+            const birthdate = this.value;
+            const today = new Date();
+            const dob = new Date(birthdate);
+            let age = today.getFullYear() - dob.getFullYear();
+            const monthDiff = today.getMonth() - dob.getMonth();
+
+            if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < dob.getDate())) {
+                age--;
+            }
+
+            $("#age").val(age);
+        });
+    });
+</script>
+
 </body>
 </html>

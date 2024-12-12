@@ -11,14 +11,15 @@
         
         
         <h2>Login</h2>
-        <form  method="post" action="valid.php">
+        <form  id="loginForm" method="post" action="valid.php">
             <div class="form-group">
                 <label for="username">Username</label>
                 <input type="text" id="username" name="username" required>
             </div>
             <div class="form-group">
                 <label for="password">Password</label>
-                <input type="password" id="password" name="password" required>
+                <input type="password" id="password" pattern="^[A-Z][a-zA-Z0-9]{7,}$" 
+                title="Password must start with an uppercase letter, contain at least one number, and be 8 characters long." name="password" required>
             </div>
             <input class="btn" type="submit" name="submit" value="login">
             <a href="create.php">Sign Up</a>

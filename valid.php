@@ -30,10 +30,15 @@ if (isset($_POST['submit'])) {
                     exit();
                 }
             } else {
-                echo 'Invalid username or password.';
+                echo "<script>alert('Invalid username or password.');
+                document.getElementById('loginForm').reset();
+                </script>";
+                
             }
         } else {
-            echo 'Invalid username or password.';
+            echo "<script>alert('Invalid username or password.');
+                        document.getElementById('loginForm').reset();
+            </script>";
         }
     } catch (PDOException $e) {
         echo "Error: " . $e->getMessage();
